@@ -1,2 +1,2 @@
 # odin-eas
-barebones. wip
+# v1.0 control box doesn't function yet
