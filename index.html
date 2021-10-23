@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP EAS</title>
     <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <section id="top">
@@ -23,8 +24,11 @@
                 <button id="set-background">Set Background Color</button>
                 <button id="eraser-mode">Eraser</button>
                 <button id="nuke-mode">RESET/CLEAR</button>
-                <input id='grid-size'>
-                <button id="sizing-mode">Set Grid Size</button>
+                <h4>Adjust Pixel Size</h4>
+                <div id="grid-control">
+                    <button><i class="material-icons" id='down-grid-size'>remove</i></button>
+                    <button><i class="material-icons" id="up-grid-size">add</i></button>
+                </div>
             </div>
             <div class="sketch">
             </div>

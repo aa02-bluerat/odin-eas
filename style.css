@@ -17,13 +17,13 @@ body{
 /* TOP PART START */
 #top >*{
     text-align: center;
-    margin-block: 30px;
 }
 #top h1{
     font-size: 42px;
 }
 #top p{
     font-size: 26px;
+    margin-bottom: 26px;
 }
 /* TOP PART END */
 
@@ -53,7 +53,6 @@ body{
     flex-flow: column nowrap;
     padding: 20px;
     margin-right: 50px;
-    border: 2px solid white;
 }
 
 button{
@@ -63,13 +62,18 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
-
+#grid-control button{
+    width: 60px;
+    border: none;
+    cursor: pointer; 
+    font-size: 28px;  
+}
 
 /*START FOR COLOR PICKER*/
 input[type='color']{
     -webkit-appearance: none;
-	width: 60px;
-	height: 60px;
+	width: 40px;
+	height: 40px;
 	border: none;
     background-color: transparent; /*to remove grey background*/
 
@@ -80,7 +84,7 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 }
 input[type="color"]::-webkit-color-swatch {  /*responsible for swatch */
 	border: 2px;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -124,7 +128,7 @@ input[type='color']::-webkit-color-swatch {
 
 .sketch{
     display: flex;
-    border: 2px solid black;
+    border: 1px solid rgb(126, 126, 126);
     width: 450px;
     height: 450px;
     flex-flow: row wrap;
@@ -133,7 +137,7 @@ input[type='color']::-webkit-color-swatch {
 @media(min-width: 1000px){     /*add more here when breaking through 1000px*/
     .sketch{
         display: flex;
-        grid: 2px solid black;
+        border: 1px solid rgb(126, 126, 126);
         width: 600px;
         height: 600px;
         flex-flow: row wrap;

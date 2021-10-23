@@ -10,11 +10,13 @@ const btnUpdateBG = document.querySelector('#set-background')
 const btnEraserMode = document.querySelector('#eraser-mode')
 const btnClear = document.querySelector('#nuke-mode')
 const btnUpdateSize = document.querySelector('#sizing-mode')
+const downGrid = document.querySelector('#down-grid-size')
+const upGrid = document.querySelector('#up-grid-size')
 
 
 
 // let gridSize = Number(prompt('grid size?'))
-let gridSize = Number(40);
+let currentGridSize = 40;
 
 //defaults
 let keyStatus = '';
@@ -48,6 +50,10 @@ function resetAll(){
     cBackground = '#ffffff';
     mode='draw';
     updateBrushColor();
+    currentGridSize= 40;
+    eraseOldGrid();
+    loadGrid();
+    drawAgain();
 }
 
 function toggleAll(){
@@ -56,10 +62,39 @@ function toggleAll(){
     btnEraserMode.classList.remove('active');
 }
 
+function loadGrid(){
+    let compGrid = currentGridSize
+    // console.log(compGrid)
+    for (let i =0; i<compGrid*compGrid; i++){
+        const makeDiv = document.createElement('div');
+        makeDiv.textContent='';
+        makeDiv.classList.add('grid');
+        makeDiv.style.flex = `1 0 ${100/compGrid}%`;
+        contSketch.appendChild(makeDiv);
+    }
+}
+
+function eraseOldGrid(){
+    let child=contSketch.lastElementChild;
+    while (child){
+        contSketch.removeChild(child);
+        child=contSketch.lastElementChild;
+    }
+}
+
+function drawAgain(){
+    const grabGrid = document.querySelectorAll('.grid');
+    // console.log(grabGrid);
+    grabGrid.forEach((box) => {box.addEventListener('mouseover', function(){
+        if (keyStatus=='pressed'){
+            updateBrushColor()
+            box.style.backgroundColor=`${cBrush}`;}   
+                   
+    })})   
+    
+}
+
 //END ALL FUNCTIONS
-
-
-
 
 
 // START listener for mouse inputs for drawing
@@ -73,25 +108,10 @@ window.addEventListener('mouseup', function(){
     keyStatus = 'lifted';
 })
 
-window.onload = ()=>{
-    const grabGrid = document.querySelectorAll('.grid');
-    // console.log(grabGrid);
-    grabGrid.forEach((box) => {box.addEventListener('mouseover', function(){
-        if (keyStatus=='pressed'){
-            updateBrushColor()
-            box.style.backgroundColor=`${cBrush}`;}   
-               
-    })})   
-}
 // END listener for mouse inputs for drawing
 
-for (let i =0; i<gridSize*gridSize; i++){
-    const makeDiv = document.createElement('div');
-    makeDiv.textContent='';
-    makeDiv.classList.add('grid');
-    makeDiv.style.flex = `1 0 ${100/gridSize}%`;
-    contSketch.appendChild(makeDiv);
-}
+loadGrid()
+drawAgain()
 
 btnColorMode.addEventListener('click',function(){
     mode='draw';
@@ -128,4 +148,28 @@ btnClear.addEventListener('click', function(){
     //reset functions
 })
 
-//add grid size selector
+downGrid.addEventListener('click', function(){
+    console.log('downgrid');
+    if (currentGridSize == 8){
+        alert("I can't handle something that small!")
+        return;
+    }
+    currentGridSize-=8
+    eraseOldGrid()
+    loadGrid()
+    drawAgain()
+})
+
+upGrid.addEventListener('click', function(){
+    console.log('upgrid');
+    if (currentGridSize == 96){
+        alert("I can't handle that size!")
+        return;
+    }
+    currentGridSize+=8
+    eraseOldGrid()
+    loadGrid()
+    drawAgain()
+})
+
+
