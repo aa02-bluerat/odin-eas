@@ -48,6 +48,7 @@ body{
 
 #control-box{
     display: flex;
+    align-items: center;
     gap: 20px;
     flex-flow: column nowrap;
     padding: 20px;
@@ -58,10 +59,68 @@ body{
 button{
     width: 150px;
     background-color: transparent;
-    border: 2px solid black;
+    border: 2px solid rgb(126, 126, 126);
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+/*START FOR COLOR PICKER*/
+input[type='color']{
+    -webkit-appearance: none;
+	width: 60px;
+	height: 60px;
+	border: none;
+    background-color: transparent; /*to remove grey background*/
+
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0px;  
+}
+input[type="color"]::-webkit-color-swatch {  /*responsible for swatch */
+	border: 2px;
+    border-radius: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+/*END FOR COLOR PICKER*/
+
+/* testing color */
+/* button,
+input[type='color'] {
+  transition: transform 0.1s ease-in-out;
+}
+
+button:hover,
+input[type='color']:hover {
+  transform: scale(1.05);
+}
+
+input[type='color']:active {
+  transition: transform 0.05s ease-in-out;
+  transform: scale(1);
+}
+
+input[type='color'] {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 80px;
+  border: none;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+} */
+/* testing color picker */
+
+
 
 .sketch{
     display: flex;
@@ -83,4 +142,11 @@ button{
 
 .grid{
     background-color: white;   
+}
+
+
+.active{
+    border: 2px solid black;
+    transform: scale(1.1);
+    background-color: rgba(255, 0, 0, 0.418);
 }

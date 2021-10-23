@@ -3,3 +3,5 @@
 # v1.1 +clear=erase all bg
 #      +colormode=black brush
 #      +eraser=brush->bg color
+# v1.2 +colorpickers
+#      +all buttons function asize from grid size
